@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<springProperty name="applicationName" source="spring.application.name" />
+	<springProperty name="gelfHost" source="gelf.host" />
+
+	<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+		<graylogHost>${gelfHost}</graylogHost>
+		<graylogPort>12201</graylogPort>
+		<layout class="de.siegmar.logbackgelf.GelfLayout">
+			<includeRawMessage>false</includeRawMessage>
+			<includeMarker>true</includeMarker>
+			<includeMdcData>true</includeMdcData>
+			<includeCallerData>true</includeCallerData>
+			<includeRootCauseData>true</includeRootCauseData>
+			<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>%m%nopex</pattern>
+			</shortPatternLayout>
+			<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>%m</pattern>
+			</fullPatternLayout>
+			<staticField>app_name:${applicationName}</staticField>
+		</layout>
+	</appender>
+
+	<root level="WARN">
+		<appender-ref ref="GELF" />
+	</root>
+</included>
+
