@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-boot-dependencies-version>1.5.9.RELEASE</spring-boot-dependencies-version>
 		<camel-spring-boot-dependencies-version>2.20.1</camel-spring-boot-dependencies-version>
-		<spring-cloud-dependencies-version>Edgware.SR1</spring-cloud-dependencies-version>
+		<spring-cloud-dependencies-version>Edgware.SR2</spring-cloud-dependencies-version>
 		<spring-boot-admin-starter-version>1.5.7</spring-boot-admin-starter-version>
 		<logback-gelf-version>1.1.0</logback-gelf-version>
 	</properties>
