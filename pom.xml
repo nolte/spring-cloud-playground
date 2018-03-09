@@ -96,7 +96,7 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.20.1</version>
 					<configuration>
-						<classesDirectory>${project.build.directory}/${artifactId}-${project.version}.jar.original</classesDirectory>
+						<classesDirectory>${project.build.directory}/${project.artifactId}-${project.version}.jar.original</classesDirectory>
 					</configuration>
 					<executions>
 						<execution>
