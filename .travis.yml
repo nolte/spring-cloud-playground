@@ -1,9 +1,11 @@
 language: java
 dist: trusty
+services:
+  - docker
 jdk:
 - openjdk8
 cache:
   directories:
   - "$HOME/.m2"
   
-script: mvn clean verify
+script: mvn clean install -PwithDocker
