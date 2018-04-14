@@ -28,5 +28,9 @@ deploy:
       branch: feature/*
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-config-service:0.0.1-SNAPSHOT spring-boot-example-config-service latest
+    on:
+      branch: feature/*
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-registry-service:0.0.1-SNAPSHOT spring-boot-example-registry-service latest
+    on:
+      branch: feature/*
