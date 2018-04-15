@@ -10,6 +10,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>ch.sbb</groupId>
+			<artifactId>springboot-graceful-shutdown</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>de.siegmar</groupId>
 			<artifactId>logback-gelf</artifactId>
 		</dependency>
