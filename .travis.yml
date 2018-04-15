@@ -23,19 +23,27 @@ script: mvn clean install -PwithDocker
 
 deploy:
   - provider: script
-    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-admin-service:0.0.1-SNAPSHOT spring-boot-example-admin-service latest
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-admin-service:0.0.1-SNAPSHOT spring-boot-example-admin-service develop
     on:
-      branch: feature/*
+      branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-config-service:0.0.1-SNAPSHOT spring-boot-example-config-service develop
+    on:
+      branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-registry-service:0.0.1-SNAPSHOT spring-boot-example-registry-service develop
+    on:
+      branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-gateway-service:0.0.1-SNAPSHOT spring-boot-example-gateway-service develop
+    on:
+      branch: develop
+  # push the master as docker tag latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-admin-service:0.0.1-SNAPSHOT spring-boot-example-admin-service latest
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-config-service:0.0.1-SNAPSHOT spring-boot-example-config-service latest
-    on:
-      branch: feature/*
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-registry-service:0.0.1-SNAPSHOT spring-boot-example-registry-service latest
-    on:
-      branch: feature/*
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-gateway-service:0.0.1-SNAPSHOT spring-boot-example-gateway-service latest
-    on:
-      branch: feature/*
-
