@@ -38,6 +38,10 @@ deploy:
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-gateway-service:0.0.1-SNAPSHOT spring-boot-example-gateway-service develop
     on:
       branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-zipkin-service:0.0.1-SNAPSHOT spring-boot-example-zipkin-service develop
+    on:
+      branch: develop
   # push the master as docker tag latest
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-admin-service:0.0.1-SNAPSHOT spring-boot-example-admin-service latest
@@ -47,3 +51,5 @@ deploy:
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-registry-service:0.0.1-SNAPSHOT spring-boot-example-registry-service latest
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-gateway-service:0.0.1-SNAPSHOT spring-boot-example-gateway-service latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-zipkin-service:0.0.1-SNAPSHOT spring-boot-example-zipkin-service latest

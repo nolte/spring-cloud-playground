@@ -167,5 +167,7 @@
 		<module>spring-boot-example-commons</module>
 		<module>spring-boot-example-jms-service</module>
 		<module>spring-boot-example-gateway-service</module>
+		<module>spring-boot-example-zipkin-service</module>
+		
 	</modules>
 </project>
