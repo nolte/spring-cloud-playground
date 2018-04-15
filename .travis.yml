@@ -1,9 +1,49 @@
 language: java
 dist: trusty
+services:
+  - docker
 jdk:
 - openjdk8
 cache:
   directories:
   - "$HOME/.m2"
-  
-script: mvn clean verify
+env:
+  global:
+    - TRAVISCI_SCRIPT_DIR=/tmp/ci_scripts
+    - DOCKER_USERNAME=nolte
+    - secure: "bq4ANXThbWCkU8QfRpPuf2vUcCXG18ecMG5KJmclMCV11MZOfnsVJ1h+zsDjEEhUpYhAWecByU800/UNq7iH+D9TusA7iAkKcDTWyacJU8FDMNmYqqgzQDUAzsaCPp3BBrLjAiv+2zIg+VkwjpPLBccmQFYYZIvFOA80pxufo/Jjfm7RHoVPAtQ8OMBhKpmglDZr731lOvVoBL0058vvLoma8/OiSIBT5XiHgKtEoiJMlKmVoc0olyS+eVPYCyu9EOrKDgSoQrzE+OGDB9ATNvQaTK8fKvGRqU/gPAmPeW7rfNMK1qVzTVniUDpX/ttdm+JBj8cgrIPZls85BtV1/jDk3i9kx5C8tEgvpJyZwtC3G94FrUEs2j3N0nS311nL6XXeDOZktKVm1mN8ca1vDGVV03mCN9IeoOtezMj0zjSRXdkHF2caPcjQ/yEmp/DlZIeiBAYWPUR/V6hE2scr7xjhi1nw9nodvjvsLYoNIDC8q8ct3LFVgTSy2F/r3sM395XtQreMteu/roayLzZ66qKBiRw7L/CsUa70+Xq+phn83Q+ISEychuEF4dAEe5jEteldWjz8cf13U3SC7stOdXnO4GzT9rLqofOyptohrTgrVBPnzXBXzZJPuT245nOF11yigsf73KKEgB2oLAHhd5O0vJg/zKfH8SQsUnP4YaA="
+
+
+before_install:
+  - mkdir -p $TRAVISCI_SCRIPT_DIR
+  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/dockerhub_deploy.sh -O $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh
+  - chmod u+x $TRAVISCI_SCRIPT_DIR/*
+
+script: mvn clean install -PwithDocker
+
+deploy:
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-admin-service:0.0.1-SNAPSHOT spring-boot-example-admin-service develop
+    on:
+      branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-config-service:0.0.1-SNAPSHOT spring-boot-example-config-service develop
+    on:
+      branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-registry-service:0.0.1-SNAPSHOT spring-boot-example-registry-service develop
+    on:
+      branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-gateway-service:0.0.1-SNAPSHOT spring-boot-example-gateway-service develop
+    on:
+      branch: develop
+  # push the master as docker tag latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-admin-service:0.0.1-SNAPSHOT spring-boot-example-admin-service latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-config-service:0.0.1-SNAPSHOT spring-boot-example-config-service latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-registry-service:0.0.1-SNAPSHOT spring-boot-example-registry-service latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-gateway-service:0.0.1-SNAPSHOT spring-boot-example-gateway-service latest
