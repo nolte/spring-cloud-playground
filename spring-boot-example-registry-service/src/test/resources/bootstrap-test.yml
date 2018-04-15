@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      enabled: false
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  client:
+    enabled: true
+    registerWithEureka: false
+    fetchRegistry: false
+ 
