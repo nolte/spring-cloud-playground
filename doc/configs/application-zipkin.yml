@@ -1,4 +1,11 @@
-spring:
+camel:
+
+  springboot: 
+    main-run-controller: true
   zipkin:
+    excludePatterns: "metrics*"
+      
+spring:       
+  zipkin: 
     span: http
-    baseurl: http://${traceervice_host:zipkinservice}:9411/api/v2/spans
+    baseUrl: http://{{traceervice_host:zipkinservice}}:9411/api/v2/spans     

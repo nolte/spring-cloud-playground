@@ -6,3 +6,7 @@ jmsexample:
       exit: jms:queue:it.produce.1.exit
       additionalHeaders:
         foo: faa
+        
+
+
+   
