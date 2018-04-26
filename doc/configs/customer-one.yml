@@ -1,0 +1,8 @@
+jmsexample:
+  routes:
+    producing:
+    - id: produce
+      cron: 0/10+*+*+*+*+?
+      exit: jms:queue:it.produce.1.exit
+      additionalHeaders:
+        foo: faa

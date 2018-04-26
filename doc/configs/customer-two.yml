@@ -1,0 +1,5 @@
+jmsexample:
+  routes:
+    consuming:
+    - id: consuming
+      entry: jms:queue:it.produce.1.exit
