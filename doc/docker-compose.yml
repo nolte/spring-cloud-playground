@@ -62,6 +62,29 @@ services:
     networks:
       - adminarea
 
+      
+  dashboardservice:
+    image: spring-boot-example-microservices-dashboard:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./configservice_envs
+    ports:
+      - "8081:8080"      
+    environment:
+      - "spring.application.name=adminarea-dashboard"
+      - "spring.profiles.active=default"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea  
+      
+  dashboardstorage:
+    image: redis:4          
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea  
+
   zipkinservice:
     image: spring-boot-example-zipkin-service:0.0.1-SNAPSHOT
     env_file:

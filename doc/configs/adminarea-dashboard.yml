@@ -1,0 +1,6 @@
+spring:
+  redis:
+    host: dashboardstorage
+    port: 6379
+    pool:
+      max-wait: 10000
