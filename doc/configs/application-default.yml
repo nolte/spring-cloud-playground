@@ -1,0 +1,22 @@
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 1
+  client:
+    serviceUrl:
+      defaultZone: http://${registry_host:registryservice}:${registry_port:8761}/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+      
+# Switch Eureka-Usage on & off
+ribbon:
+  eureka:
+    enabled: enabled
+  # receive Server list from Eureka every second
+  ServerListRefreshInterval: 1000

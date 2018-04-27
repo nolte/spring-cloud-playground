@@ -1,0 +1,8 @@
+spring:
+  activemq:
+    broker-url: ${messagebus_broker_url:failover:(tcp://activemqbroker:61616)?timeout=3000}
+    user: admin
+    password: admin
+    pool:
+      enabled: true
+      max-connections: 10

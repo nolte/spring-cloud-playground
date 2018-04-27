@@ -1,0 +1,21 @@
+camel:
+  zipkin:
+    server-service-mappings:
+      "*" : customer-one
+    client-service-mappings:
+      "*" : customer-two
+
+jmsexample:
+  routes:
+    producing:
+    - id: produce
+      cron: 0/10+*+*+*+*+?
+      exit: jms:queue:customerOne.news.customerTwo
+      additionalHeaders:
+        foo: faa
+    consuming:
+    - id: consuming
+      entry: jms:queue:customerTwo.news.customerOne        
+
+
+   

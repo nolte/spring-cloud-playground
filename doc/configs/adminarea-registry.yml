@@ -1,0 +1,21 @@
+server:
+  port: 8761
+
+spring:
+  logging:
+    level:
+      org.springframework.web: DEBUG
+      guru.springframework.controllers: DEBUG
+      org.hibernate: DEBUG
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    instanceInfoReplicationIntervalSeconds: 1
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2    
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    eviction-interval-timer-in-ms: 1000
