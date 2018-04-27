@@ -7,7 +7,7 @@
   - [Spring Cloud Config][springbootcloudconfig]
   - [Spring Cloud Netflix (Eureka)][springbootcloudeureka]
   - [Netflix Zuul Api Gateway][netflixzuul]
-  - [Netflix Zuul Api Gateway][netflixzuul]
+  - [Zipkin][zipkin]
   - [Apache Camel][springbootapachecamel]  
   - [microservices dashboard][microservicesdashboardserver]
 
@@ -49,6 +49,7 @@ docker-compose up -d configservice dashboardstorage && \
  
 ```
 
+[zipkin]: https://zipkin.io/
 [microservicesdashboardserver]: https://github.com/ordina-jworks/microservices-dashboard-server
 [netflixzuul]:https://github.com/spring-cloud/spring-cloud-netflix  
 [springbootcloudadmin]: https://github.com/codecentric/spring-boot-admin
