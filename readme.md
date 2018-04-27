@@ -2,6 +2,23 @@
 
 [![Build Status](https://travis-ci.org/nolte/spring-cloud-playground.svg?branch=master)](https://travis-ci.org/nolte/spring-cloud-playground)
 
+[![](https://images.microbadger.com/badges/image/nolte/spring-boot-example-config-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-config-service "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/nolte/spring-boot-example-config-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-config-service "Get your own version badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/image/nolte/spring-boot-example-admin-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-admin-service "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/nolte/spring-boot-example-admin-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-admin-service "Get your own version badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/image/nolte/spring-boot-example-gateway-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-gateway-service "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/nolte/spring-boot-example-gateway-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-gateway-service "Get your own version badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/image/nolte/spring-boot-example-registry-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-registry-service "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/nolte/spring-boot-example-registry-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-registry-service "Get your own version badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/image/nolte/spring-boot-example-zipkin-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-zipkin-service "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/nolte/spring-boot-example-zipkin-service.svg)](https://microbadger.com/images/nolte/spring-boot-example-zipkin-service "Get your own version badge on microbadger.com")
+
+
+
  Some Playground Project for Testing Spring Cloud Project. 
  
  Used Projects:
