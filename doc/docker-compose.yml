@@ -1,0 +1,135 @@
+version: '3'
+services:
+
+  registryservice:
+    image: spring-boot-example-registry-service:0.0.1-SNAPSHOT
+    hostname: registryservice
+    env_file:
+      - ./global_envs
+      - ./configservice_envs      
+    environment:
+      - "spring.application.name=adminarea-registry"
+      - "spring.profiles.active=default"
+      - "server.port=8761"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
+  configservice:
+    image: spring-boot-example-config-service:0.0.1-SNAPSHOT
+    hostname: configservice
+    env_file:
+      - ./global_envs
+    environment:
+      - "spring.application.name=adminarea-configservice"
+      - "spring.profiles.active=native"
+      - "gelf.host=logstash"
+      - "spring.config.location=/opt/application.yml"
+    volumes:
+      - /etc/timezone:/etc/timezone
+      - ./application-configservice.yml:/opt/application.yml:ro
+      - ./configs:/var/config-repos/base
+    networks:
+      - adminarea
+
+
+  adminservice:
+    image: spring-boot-example-admin-service:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./configservice_envs
+    environment:
+      - "spring.application.name=adminarea-adminservice"
+      - "spring.profiles.active=default"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+      
+  gatewayservice:
+    image: spring-boot-example-gateway-service:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./configservice_envs
+    environment:
+      - "spring.application.name=adminarea-gatewayservice"
+      - "spring.profiles.active=default"
+    ports:
+      - "8080:8080"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
+  zipkinservice:
+    image: spring-boot-example-zipkin-service:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./configservice_envs
+    environment:
+      - "spring.application.name=adminarea-zipkinservice"
+      - "spring.profiles.active=default"
+      - "server.port=9411"
+    ports:
+      - "9411:9411"
+    expose:
+      - 9411
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
+
+  zipkinstorage:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: zipkin
+      MYSQL_PASSWORD: password
+      MYSQL_USER: zipkin
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
+
+###############
+
+  activemqbroker:
+    image: webcenter/activemq:5.14.3
+    networks:
+      - adminarea
+      
+      
+  applicationone:
+    image: spring-boot-example-jms-service:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./zipkin_envs      
+      - ./configservice_envs
+    environment:
+      - "spring.application.name=customer-one"
+      - "spring.profiles.active=sender,default,jms,zipkin"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
+  applicationtwo:
+    image: spring-boot-example-jms-service:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./zipkin_envs
+      - ./configservice_envs      
+    environment:
+      - "spring.application.name=customer-two"
+      - "spring.profiles.active=sender,default,jms,zipkin"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
+networks:
+   adminarea:
+

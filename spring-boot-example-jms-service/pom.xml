@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>eu.hermes.esb</groupId>
@@ -7,7 +8,9 @@
 	</parent>
 	<artifactId>spring-boot-example-jms-service</artifactId>
 
-
+	<properties>
+		<zipkin-version>2.4.5</zipkin-version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>eu.hermes.esb</groupId>
@@ -60,6 +63,11 @@
 			<artifactId>camel-quartz2</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-zipkin-starter</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -105,4 +113,18 @@
 		</profile>
 	</profiles>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.zipkin.java</groupId>
+				<artifactId>zipkin</artifactId>
+				<version>${zipkin-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.zipkin.zipkin2</groupId>
+				<artifactId>zipkin</artifactId>
+				<version>${zipkin-version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

@@ -1,0 +1,3 @@
+# TODO put this config to the spring config service, but i didnt find a runnable solution
+ZIPKIN_COLLECTOR_HTTP_SERVICE_HOST=zipkinservice
+ZIPKIN_COLLECTOR_HTTP_SERVICE_PORT=9411
