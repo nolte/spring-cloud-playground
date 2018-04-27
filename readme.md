@@ -14,7 +14,7 @@
 
 ## Build without Maven On HostSystem
 
- When you didn`t have istalled Maven, or you dont will download the Dependencies to your local Maven Repo you can build the Project in a Docker Env, based on [maven:3.5.2-jdk-8-alpine][https://hub.docker.com/_/maven/].
+ When you didn`t have istalled Maven, or you dont will download the Dependencies to your local Maven Repo you can build the Project in a Docker Env, based on [maven:3.5.2-jdk-8-alpine](https://hub.docker.com/_/maven/).
 
 ### Only Build the Container
 
