@@ -1,11 +1,11 @@
 package eu.hermes.esb.example.dashboard;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import be.ordina.msdashboard.EnableMicroservicesDashboardServer;
+import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication;
 
 @SpringBootApplication
 @EnableMicroservicesDashboardServer
@@ -14,7 +14,7 @@ import be.ordina.msdashboard.EnableMicroservicesDashboardServer;
 public class DashboardServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DashboardServiceApplication.class, args);
+		GracefulshutdownSpringApplication.run(DashboardServiceApplication.class, args);
 	}
 
 }

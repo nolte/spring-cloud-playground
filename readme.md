@@ -37,13 +37,13 @@ docker run -it --rm --name spring-boot-example-build-container \
 ```
 cd ./doc
 
-docker-compose up -d configservice && \
- sleep 20 && docker-compose up -d registryservice adminservice gatewayservice && \
+docker-compose up -d configservice dashboardstorage && \
+ sleep 20 && docker-compose up -d registryservice adminservice gatewayservice dashboardservice && \
  sleep 5 && docker-compose up -d zipkinstorage && \
  sleep 10 && docker-compose up -d zipkinservice && \
  sleep 1 && docker-compose up -d activemqbroker && \
  sleep 5 && docker-compose up -d applicationone applicationtwo
-
+ 
 ```
 
 
