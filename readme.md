@@ -1,5 +1,7 @@
 # Simple Spring Boot Cloud Playground
 
+[![Build Status](https://travis-ci.org/nolte/spring-cloud-playground.svg?branch=master)](https://travis-ci.org/nolte/spring-cloud-playground)
+
  Some Playground Project for Testing Spring Cloud Project. 
  
  Used Projects:
