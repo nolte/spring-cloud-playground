@@ -61,6 +61,7 @@ services:
       - /etc/timezone:/etc/timezone
     networks:
       - adminarea
+
       
   dashboardservice:
     image: spring-boot-example-microservices-dashboard:0.0.1-SNAPSHOT
@@ -83,6 +84,7 @@ services:
       - /etc/timezone:/etc/timezone
     networks:
       - adminarea  
+
   zipkinservice:
     image: spring-boot-example-zipkin-service:0.0.1-SNAPSHOT
     env_file:
