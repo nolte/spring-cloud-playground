@@ -1,12 +1,12 @@
 package eu.hermes.esb.example;
 
 import org.apache.camel.zipkin.starter.CamelZipkin;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SpringBootJMSExample {
 
   public static void main(String[] args) throws Exception {
-    SpringApplication.run(SpringBootJMSExample.class, args);
+	  GracefulshutdownSpringApplication.run(SpringBootJMSExample.class, args);
   }
 
 }

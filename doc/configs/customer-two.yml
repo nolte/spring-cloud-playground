@@ -2,5 +2,18 @@ jmsexample:
   routes:
     consuming:
     - id: consuming
-      entry: jms:queue:it.produce.1.exit
+      entry: jms:queue:customerOne.news.customerTwo
+    producing:
+    - id: produce
+      cron: 0/10+*+*+*+*+?
+      exit: jms:queue:customerTwo.news.customerOne
+      additionalHeaders:
+        foo: faa
 
+
+camel:
+  zipkin:
+    server-service-mappings:
+      "*" : customer-two
+    client-service-mappings:
+      "*" : customer-one

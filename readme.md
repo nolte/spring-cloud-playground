@@ -32,6 +32,21 @@ docker run -it --rm --name spring-boot-example-build-container \
     -w /usr/src/mymaven maven:3.5.2-jdk-8-alpine \
     mvn clean install -PwithDocker
 ```
+### Start the Local Docker Env
+
+```
+cd ./doc
+
+docker-compose up -d configservice && \
+ sleep 20 && docker-compose up -d registryservice adminservice gatewayservice && \
+ sleep 5 && docker-compose up -d zipkinstorage && \
+ sleep 10 && docker-compose up -d zipkinservice && \
+ sleep 1 && docker-compose up -d activemqbroker && \
+ sleep 5 && docker-compose up -d applicationone applicationtwo
+
+```
+
+
   
 [springbootcloudadmin]: https://github.com/codecentric/spring-boot-admin
 [springbootcloudconfig]: https://cloud.spring.io/spring-cloud-config/

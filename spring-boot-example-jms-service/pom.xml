@@ -8,7 +8,9 @@
 	</parent>
 	<artifactId>spring-boot-example-jms-service</artifactId>
 
-
+	<properties>
+		<zipkin-version>2.4.5</zipkin-version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>eu.hermes.esb</groupId>
@@ -111,4 +113,18 @@
 		</profile>
 	</profiles>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.zipkin.java</groupId>
+				<artifactId>zipkin</artifactId>
+				<version>${zipkin-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.zipkin.zipkin2</groupId>
+				<artifactId>zipkin</artifactId>
+				<version>${zipkin-version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

@@ -78,6 +78,8 @@ services:
       - "JAVA_OPTS=-Xmx64m -Xss512k"
     ports:
       - "9411:9411"
+    expose:
+      - 9411
     volumes:
       - /etc/timezone:/etc/timezone
     networks:
@@ -114,6 +116,8 @@ services:
       - "spring.profiles.active=sender,default,jms,zipkin"
       - "spring.cloud.config.uri=http://configservice:8080"
       - "JAVA_OPTS=-Xmx64m -Xss512k"
+#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_HOST=zipkinservice"
+#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_PORT=9411"
     volumes:
       - /etc/timezone:/etc/timezone
     networks:
@@ -128,6 +132,8 @@ services:
       - "spring.profiles.active=sender,default,jms,zipkin"
       - "spring.cloud.config.uri=http://configservice:8080"
       - "JAVA_OPTS=-Xmx64m -Xss512k"
+#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_HOST=zipkinservice"
+#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_PORT=9411"      
     volumes:
       - /etc/timezone:/etc/timezone
     networks:
