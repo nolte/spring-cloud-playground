@@ -1,1 +1,2 @@
 gelf.host=logstash
+JAVA_OPTS=-Xmx64m -Xss512k

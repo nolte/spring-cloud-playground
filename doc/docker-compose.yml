@@ -6,12 +6,11 @@ services:
     hostname: registryservice
     env_file:
       - ./global_envs
+      - ./configservice_envs      
     environment:
       - "spring.application.name=adminarea-registry"
-      - "spring.cloud.config.uri=http://configservice:8080"
       - "spring.profiles.active=default"
       - "server.port=8761"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
     volumes:
       - /etc/timezone:/etc/timezone
     networks:
@@ -27,7 +26,6 @@ services:
       - "spring.profiles.active=native"
       - "gelf.host=logstash"
       - "spring.config.location=/opt/application.yml"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
     volumes:
       - /etc/timezone:/etc/timezone
       - ./application-configservice.yml:/opt/application.yml:ro
@@ -40,11 +38,10 @@ services:
     image: spring-boot-example-admin-service:0.0.1-SNAPSHOT
     env_file:
       - ./global_envs
+      - ./configservice_envs
     environment:
       - "spring.application.name=adminarea-adminservice"
       - "spring.profiles.active=default"
-      - "spring.cloud.config.uri=http://configservice:8080"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
     volumes:
       - /etc/timezone:/etc/timezone
     networks:
@@ -54,11 +51,10 @@ services:
     image: spring-boot-example-gateway-service:0.0.1-SNAPSHOT
     env_file:
       - ./global_envs
+      - ./configservice_envs
     environment:
       - "spring.application.name=adminarea-gatewayservice"
       - "spring.profiles.active=default"
-      - "spring.cloud.config.uri=http://configservice:8080"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
     ports:
       - "8080:8080"
     volumes:
@@ -70,12 +66,11 @@ services:
     image: spring-boot-example-zipkin-service:0.0.1-SNAPSHOT
     env_file:
       - ./global_envs
+      - ./configservice_envs
     environment:
       - "spring.application.name=adminarea-zipkinservice"
       - "spring.profiles.active=default"
       - "server.port=9411"
-      - "spring.cloud.config.uri=http://configservice:8080"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
     ports:
       - "9411:9411"
     expose:
@@ -111,13 +106,11 @@ services:
     image: spring-boot-example-jms-service:0.0.1-SNAPSHOT
     env_file:
       - ./global_envs
+      - ./zipkin_envs      
+      - ./configservice_envs
     environment:
       - "spring.application.name=customer-one"
       - "spring.profiles.active=sender,default,jms,zipkin"
-      - "spring.cloud.config.uri=http://configservice:8080"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
-#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_HOST=zipkinservice"
-#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_PORT=9411"
     volumes:
       - /etc/timezone:/etc/timezone
     networks:
@@ -127,13 +120,11 @@ services:
     image: spring-boot-example-jms-service:0.0.1-SNAPSHOT
     env_file:
       - ./global_envs
+      - ./zipkin_envs
+      - ./configservice_envs      
     environment:
       - "spring.application.name=customer-two"
       - "spring.profiles.active=sender,default,jms,zipkin"
-      - "spring.cloud.config.uri=http://configservice:8080"
-      - "JAVA_OPTS=-Xmx64m -Xss512k"
-#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_HOST=zipkinservice"
-#      - "ZIPKIN_COLLECTOR_HTTP_SERVICE_PORT=9411"      
     volumes:
       - /etc/timezone:/etc/timezone
     networks:

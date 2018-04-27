@@ -5,11 +5,6 @@ camel:
     main-run-controller: true
   zipkin:
     excludePatterns: "metrics*"
-    collector:
-      http:
-        service:
-          host: "{{traceervice_host:zipkinservice}}"
-          port: "{{traceervice_port:9411}}"      
 #spring:       
 #  zipkin: 
 #    span: http
