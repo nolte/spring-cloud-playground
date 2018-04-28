@@ -59,13 +59,11 @@ docker run -it --rm --name spring-boot-example-build-container \
 ```
 cd ./doc
 
-docker-compose up -d configservice dashboardstorage && \
- sleep 20 && docker-compose up -d registryservice adminservice gatewayservice dashboardservice && \
- sleep 5 && docker-compose up -d zipkinstorage && \
- sleep 10 && docker-compose up -d zipkinservice && \
- sleep 1 && docker-compose up -d activemqbroker && \
+docker-compose up -d configservice dashboardstorage zipkinstorage activemqbroker && \
+ sleep 20 && docker-compose up -d registryservice  && \
+ sleep 20 && adminservice gatewayservice dashboardservice zipkinservice && \
  sleep 5 && docker-compose up -d applicationone applicationtwo frontend
- ing
+
 ```
 
 [zipkin]: https://zipkin.io/

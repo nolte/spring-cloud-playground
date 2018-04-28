@@ -1,3 +1,6 @@
 spring:
   application:
     name: microservices-dashboard
+  cloud:
+    config:
+      failFast: true
