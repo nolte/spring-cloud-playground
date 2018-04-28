@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: "test"
+  cloud:
+    discovery:
+      enabled: false
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false

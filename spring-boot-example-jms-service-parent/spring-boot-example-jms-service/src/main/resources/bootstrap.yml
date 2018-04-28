@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: example-jms-service
+  cloud:
+    config:
+      failFast: true
+    
