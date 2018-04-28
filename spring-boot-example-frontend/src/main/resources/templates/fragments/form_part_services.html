@@ -1,0 +1,5 @@
+<ul class="list-group">
+	<li th:each="search : ${services}" class="list-group-item"><input
+		type="checkbox" name="destinationServices" th:value="${search.uri}">
+		<label th:text="${search.serviceId}"></label></input></li>
+</ul>

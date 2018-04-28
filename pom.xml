@@ -193,5 +193,6 @@
 		<module>spring-boot-example-gateway-service</module>
 		<module>spring-boot-example-zipkin-service</module>
 		<module>spring-boot-example-microservices-dashboard</module>
+		<module>spring-boot-example-frontend</module>
 	</modules>
 </project>

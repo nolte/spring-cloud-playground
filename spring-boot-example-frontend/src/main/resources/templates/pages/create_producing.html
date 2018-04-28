@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Welcome Page'">
+
+<th:block layout:fragment="content">
+	<form action="#" th:action="@{/create/producing}"
+		th:object="${routeForm}" method="post">
+
+		<th:block layout:replace="fragments/form_part_services" />
+
+		<div class="form-group">
+			<label for="inputRouteId">RouteId</label> <input class="form-control"
+				id="inputRouteId" placeholder="Enter a routeId" type="text"
+				th:field="*{routeToCreate.id}" />
+		</div>
+		<div class="form-group">
+			<label for="inputEntry">exit:</label> <input class="form-control"
+				id="inputEntry" placeholder="Enter a uri" type="text"
+				th:field="*{routeToCreate.exit}" />
+		</div>
+		<div class="form-group">
+			<label for="inputCron">cron:</label> <input class="form-control"
+				id="inputCron" placeholder="Enter a uri" type="text"
+				th:field="*{routeToCreate.cron}" />
+		</div>
+
+		<div>
+			<div class="row">
+				<div class="col-sm">
+					<strong>Key</strong>
+				</div>
+				<div class="col-sm">
+					<strong>Value</strong>
+				</div>
+			</div>
+			<ul id="additionalHeaders" class="list-group">
+				<li th:each="pr, stat: *{routeToCreate.additionalHeaders}"
+					class="list-group-item ">
+					<div class="row">
+						<div class="col-sm">
+							<input type="text" name="value"
+								th:field="*{routeToCreate.additionalHeaders[__${stat.index}__].key}"
+								th:value="${pr.key}" class="headerkey" />
+						</div>
+						<div class="col-sm">
+							<input type="text" name="value"
+								th:field="*{routeToCreate.additionalHeaders[__${stat.index}__].value}"
+								th:value="${pr.value}" class="headervalue" />
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="row">
+				<div class="col-sm"></div>
+				<div class="col-sm">
+					<a href="" onclick="myJsFunc(); return false;">add</a>
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+</th:block>
+<th:block layout:fragment="page_script_path">
+	<script th:inline="javascript">
+		function myJsFunc() {
+			var items = $("#additionalHeaders li").length;;
+			console.log(items);
+			var element = $("#additionalHeaders li").last().clone();
+			element.find(".headerkey").attr("id","routeToCreate.additionalHeaders"+items+".key").attr("name","routeToCreate.additionalHeaders["+items+"].key");
+			element.find(".headervalue").attr("id","routeToCreate.additionalHeaders"+items+".value").attr("name","routeToCreate.additionalHeaders["+items+"].value");
+			$( "#additionalHeaders" ).append( element );
+			$("#additionalHeaders li").last()
+			//
+			
+		}
+	</script>
+</th:block>
+</html>

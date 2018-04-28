@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Welcome Page'">
+
+<th:block layout:fragment="content">
+	<form action="#" th:action="@{/create/bridge}" th:object="${routeForm}"
+		method="post">
+
+        <th:block layout:replace="fragments/form_part_services" />
+		<div class="form-group">
+			<label for="inputRouteId">RouteId</label> <input class="form-control"
+				id="inputRouteId" placeholder="Enter a routeId" type="text"
+				th:field="*{routeToCreate.id}" />
+		</div>
+		<div class="form-group">
+			<label for="inputEntry">Entry:</label> <input class="form-control"
+				id="inputEntry" placeholder="Enter a uri" type="text"
+				th:field="*{routeToCreate.entry}" />
+		</div>
+		<div class="form-group">
+			<label for="inputExit">Exit:</label> <input class="form-control"
+				id="inputExit" placeholder="Enter a uri" type="text"
+				th:field="*{routeToCreate.exit}" />
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+</th:block>
+</html>

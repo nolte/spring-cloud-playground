@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='Welcome Page'">
+
+<th:block layout:fragment="content">
+	<div th:each="service : ${services}" class="list-group">
+		<div class="list-group-item">
+			<h5 class="mb-1" th:text="${service.serviceId}" />
+			<p th:text="${service.uri}" />
+			<ul id="additionalHeaders" class="list-group">
+				<li th:each="route, stat: *{service.routes}"
+					class="list-group-item " th:text="${route}"></li>
+			</ul>
+		</div>
+	</div>
+</th:block>
+</html>

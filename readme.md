@@ -64,8 +64,8 @@ docker-compose up -d configservice dashboardstorage && \
  sleep 5 && docker-compose up -d zipkinstorage && \
  sleep 10 && docker-compose up -d zipkinservice && \
  sleep 1 && docker-compose up -d activemqbroker && \
- sleep 5 && docker-compose up -d applicationone applicationtwo
- 
+ sleep 5 && docker-compose up -d applicationone applicationtwo frontend
+ ing
 ```
 
 [zipkin]: https://zipkin.io/

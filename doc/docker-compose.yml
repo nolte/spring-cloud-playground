@@ -153,6 +153,21 @@ services:
     networks:
       - adminarea
 
+
+  frontend:
+    image: spring-boot-example-frontend:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./zipkin_envs
+      - ./configservice_envs      
+    environment:
+      - "spring.profiles.active=default,zipkin"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea      
+      
+
 networks:
    adminarea:
 
