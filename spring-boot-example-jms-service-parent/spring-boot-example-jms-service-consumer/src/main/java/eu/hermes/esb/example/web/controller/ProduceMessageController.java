@@ -16,7 +16,6 @@ public interface ProduceMessageController {
 
 	@RequestLine("POST " + "/api/message")
     @Headers("Content-Type: application/json")
-	@RequestMapping(method = RequestMethod.POST, value = "/api/message", produces = "application/json", consumes = "application/json")
 	public boolean sendMessage(@Valid @RequestBody MessageDTO message);
 
 }
