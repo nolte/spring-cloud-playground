@@ -168,6 +168,7 @@
 
 
 	<modules>
+		<module>spring-boot-example-hystrix</module>
 		<module>spring-boot-example-admin-service</module>
 		<module>spring-boot-example-registry-service</module>
 		<module>spring-boot-example-config-service</module>
