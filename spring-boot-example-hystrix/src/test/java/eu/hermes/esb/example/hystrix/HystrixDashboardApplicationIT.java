@@ -1,4 +1,4 @@
-package eu.hermes.esb.example.admin;
+package eu.hermes.esb.example.hystrix;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,10 +14,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import eu.hermes.esb.example.hystrix.HystrixDashboardApplication;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AdminServiceApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = HystrixDashboardApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles({ "test" })
-public class AdminServiceApplicationIT {
+public class HystrixDashboardApplicationIT {
 	
 	@Autowired
 	TestRestTemplate testRestTemplate;
