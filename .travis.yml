@@ -46,6 +46,11 @@ deploy:
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-microservices-dashboard:0.0.1-SNAPSHOT spring-boot-example-microservices-dashboard develop
     on:
       branch: develop
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-hystrix:0.0.1-SNAPSHOT spring-boot-example-hystrix develop
+    on:
+      branch: develop
+
 
   # push the master as docker tag latest
   - provider: script
@@ -60,3 +65,7 @@ deploy:
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-zipkin-service:0.0.1-SNAPSHOT spring-boot-example-zipkin-service latest
   - provider: script
     script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-microservices-dashboard:0.0.1-SNAPSHOT spring-boot-example-microservices-dashboard latest
+  - provider: script
+    script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD spring-boot-example-hystrix:0.0.1-SNAPSHOT spring-boot-example-hystrix latest
+
+
