@@ -117,6 +117,20 @@ services:
       - adminarea
 
 
+  hystrixdashboardservice:
+    image: spring-boot-example-hystrix:0.0.1-SNAPSHOT
+    env_file:
+      - ./global_envs
+      - ./configservice_envs
+    environment:
+      - "spring.profiles.active=default"
+    ports:
+      - "8084:8080"
+    volumes:
+      - /etc/timezone:/etc/timezone
+    networks:
+      - adminarea
+
 ###############
 
   activemqbroker:
