@@ -5,7 +5,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Configuration;
 
 import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication;
-import de.codecentric.boot.admin.config.EnableAdminServer;
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 @Configuration
 @EnableAutoConfiguration

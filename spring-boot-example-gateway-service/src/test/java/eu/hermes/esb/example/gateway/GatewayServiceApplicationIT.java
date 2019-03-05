@@ -24,7 +24,7 @@ public class GatewayServiceApplicationIT {
 
 	@Test
 	public void loadSimpleConfigOverHttpWithProfile() {
-		ResponseEntity<Map> config = testRestTemplate.getForEntity("/info", Map.class);
+		ResponseEntity<Map> config = testRestTemplate.getForEntity("/actuator/info", Map.class);
 		assertEquals(HttpStatus.OK, config.getStatusCode());
 	}
 

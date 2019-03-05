@@ -24,7 +24,7 @@ public class AdminServiceApplicationIT {
 
 	@Test
 	public void loadInfosFromAPI() {
-		ResponseEntity<Map> config = testRestTemplate.getForEntity("/info", Map.class);
+		ResponseEntity<Map> config = testRestTemplate.getForEntity("/actuator/info", Map.class);
 		assertEquals(HttpStatus.OK, config.getStatusCode());
 	}
 

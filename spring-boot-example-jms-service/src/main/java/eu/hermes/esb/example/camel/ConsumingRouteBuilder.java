@@ -22,7 +22,7 @@ public class ConsumingRouteBuilder extends RouteBuilder {
   @Override
   public void configure() throws Exception {
     log.debug("init consuming route {}", consuming.getId());
-    from(consuming.getEntry()).routeId("jmsreceiver" + consuming.getId()).transacted()
+    from(consuming.getEntry()).routeId("jmsreceiver" + consuming.getId())
         .log(LoggingLevel.INFO, "eu.hermes.esb.example.jms.receiver", "Receive Message from: " + consuming.getEntry())
         .setHeader(MetricsConstants.HEADER_METRIC_NAME, constant("consumed." + consuming.getId() + ".counter"))
         .to("metrics:counter:name.not.used");

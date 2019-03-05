@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @EnableAutoConfiguration
 @EnableJms
-@EnableTransactionManagement
 public class SpringBootJMSExample {
 
   public static void main(String[] args) throws Exception {

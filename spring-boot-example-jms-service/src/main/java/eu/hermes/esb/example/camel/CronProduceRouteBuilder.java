@@ -26,7 +26,7 @@ public class CronProduceRouteBuilder extends RouteBuilder {
     log.debug("init producing by Cron route {}", producing.getId());
 
     from("quartz2://timer" + producing.getId() + "?cron=" + producing.getCron())
-        .routeId("produceMessagesByCron" + producing.getId()).transacted()
+        .routeId("produceMessagesByCron" + producing.getId())
         .setBody(constant((new DataFactory().getRandomText(producing.getProducedSize()))))
         .setHeader(MetricsConstants.HEADER_METRIC_NAME, constant("produce." + producing.getId() + ".counter"))
         .process(new Processor() {

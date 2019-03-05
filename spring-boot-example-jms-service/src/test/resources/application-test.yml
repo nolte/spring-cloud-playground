@@ -4,7 +4,7 @@ spring:
     user: admin
     password: admin
     pool:
-      enabled: true
+      enabled: false
       max-connections: 10
       
 logging:

@@ -39,8 +39,8 @@ public class LoggingMDCConfig {
     camelContext.setUseMDCLogging(useMDCLogging);
   }
 
-  @Autowired
-  private MetricRegistry metricRegistry;
+//  @Autowired
+//  private MetricRegistry metricRegistry;
 
   @Bean
   CamelContextConfiguration contextConfiguration() {
@@ -52,13 +52,13 @@ public class LoggingMDCConfig {
 
       public void beforeApplicationStart(CamelContext context) {
         log.info("Configuring Camel metrics on all routes");
-        MetricsRoutePolicyFactory fac = new MetricsRoutePolicyFactory();
-        fac.setMetricsRegistry(metricRegistry);
-        context.addRoutePolicyFactory(fac);
-
-        MetricsMessageHistoryFactory messageHistoryFactory = new MetricsMessageHistoryFactory();
-        messageHistoryFactory.setMetricsRegistry(metricRegistry);
-        context.setMessageHistoryFactory(messageHistoryFactory);
+//        MetricsRoutePolicyFactory fac = new MetricsRoutePolicyFactory();
+//        fac.setMetricsRegistry(metricRegistry);
+//        context.addRoutePolicyFactory(fac);
+//
+//        MetricsMessageHistoryFactory messageHistoryFactory = new MetricsMessageHistoryFactory();
+//        messageHistoryFactory.setMetricsRegistry(metricRegistry);
+//        context.setMessageHistoryFactory(messageHistoryFactory);
       }
 
     };
